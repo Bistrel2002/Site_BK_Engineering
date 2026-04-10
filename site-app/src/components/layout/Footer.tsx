@@ -11,13 +11,13 @@ const nav = [
   { label: "Contact",          href: "/contact" },
 ];
 
-const services = [
-  { label: "Conseil SI",             href: "/services" },
-  { label: "Développement Logiciel", href: "/services" },
-  { label: "Cloud & Infrastructure", href: "/services" },
-  { label: "Intégration & APIs",     href: "/services" },
-  { label: "Tests & QA",             href: "/services" },
-];
+// const services = [
+//   { label: "Conseil SI",             href: "/services" },
+//   { label: "Développement Logiciel", href: "/services" },
+//   { label: "Cloud & Infrastructure", href: "/services" },
+//   { label: "Intégration & APIs",     href: "/services" },
+//   { label: "Tests & QA",             href: "/services" },
+// ];
 
 const legal = [
   { label: "Mentions Légales",            href: "/mentions-legales" },
