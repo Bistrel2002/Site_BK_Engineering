@@ -62,7 +62,7 @@ export default function SalarySimulator() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="glass rounded-2xl p-8"
+          className="glass rounded-2xl p-6 md:p-8"
         >
           <h3 className="font-display font-semibold text-lg text-text-primary mb-6 flex items-center gap-2">
             <Calculator size={20} className="text-secondary" />
@@ -148,7 +148,7 @@ export default function SalarySimulator() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="glass rounded-2xl p-8"
+          className="glass rounded-2xl p-6 md:p-8"
         >
           <h3 className="font-display font-semibold text-lg text-text-primary mb-6 flex items-center gap-2">
             <TrendingUp size={20} className="text-success" />

@@ -62,7 +62,7 @@ export default function Hero() {
       {/* Main Content - Wrapped in motion block with scroll-driven values */}
       <motion.div 
         style={{ y: yOffset, opacity: opacityFade, paddingInline: "clamp(1rem, 5vw, 2rem)" }}
-        className="relative z-10 max-w-[1200px] mx-auto w-full pt-32 pb-20"
+        className="relative z-10 max-w-[1200px] mx-auto w-full pt-28 lg:pt-32 pb-16 lg:pb-20"
       >
         <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
           
@@ -77,7 +77,7 @@ export default function Hero() {
             {/* Bold Stacked Headline with bi-color effect mimicking the reference */}
             <h1
               className="font-display font-bold leading-[1.05] mb-6 tracking-tight"
-              style={{ fontSize: "clamp(3rem, 5.5vw, 4.5rem)" }}
+              style={{ fontSize: "clamp(2.5rem, 8vw, 4.5rem)" }}
             >
               <span className="text-white block">Votre partenaire</span>
               <span className="text-white block">tech</span>

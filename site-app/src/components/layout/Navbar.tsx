@@ -94,7 +94,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-bg-dark/98 backdrop-blur-xl pt-24 px-6 lg:hidden"
+            className="fixed inset-0 z-40 bg-bg-dark pt-24 px-6 lg:hidden"
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -102,10 +102,10 @@ export default function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={cn(
-                    "text-lg font-medium py-4 px-4 rounded-xl transition-colors duration-200",
+                    "text-xl font-display font-semibold py-5 px-6 rounded-2xl transition-all duration-200 border border-transparent",
                     location.pathname === link.href
-                      ? "text-accent-light bg-accent/10"
-                      : "text-text-secondary hover:text-text-primary hover:bg-bg-card"
+                      ? "text-accent-light bg-accent/10 border-accent/20"
+                      : "text-text-secondary hover:text-text-primary hover:bg-bg-card hover:border-border/30"
                   )}
                 >
                   {link.label}

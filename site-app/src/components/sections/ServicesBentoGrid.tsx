@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { slideUp, staggerContainer } from "@/animations/variants";
@@ -69,6 +70,7 @@ const bentoItems = [
 ];
 
 export default function ServicesBentoGrid() {
+  const [activeId, setActiveId] = useState<number | null>(null);
   const { scrollY } = useScroll();
   const yOffset = useTransform(scrollY, [0, 800], [0, -150]);
   const opacityFade = useTransform(scrollY, [0, 600], [1, 0]);
@@ -127,11 +129,13 @@ export default function ServicesBentoGrid() {
             <motion.div
               key={item.id}
               variants={slideUp}
-              className={`relative group rounded-[2rem] bg-bg-card/40 border border-white/5 shadow-2xl [perspective:1000px] ${item.className}`}
+              onClick={() => setActiveId(activeId === item.id ? null : item.id)}
+              className={`relative group rounded-[2rem] bg-bg-card/40 border border-white/5 shadow-2xl [perspective:1000px] cursor-pointer ${item.className}`}
             >
               {/* Inner wrapper for 3D flip context */}
               <div 
                 className={`relative w-full h-full rounded-[2rem] transition-transform duration-700 [transform-style:preserve-3d] ${
+                  item.effectType === "flipX" && (activeId === item.id) ? "[transform:rotateX(-180deg)]" : 
                   item.effectType === "flipX" ? "group-hover:[transform:rotateX(-180deg)]" : ""
                 }`}
               >
@@ -144,30 +148,30 @@ export default function ServicesBentoGrid() {
                     <img 
                       src={item.image} 
                       alt={item.title} 
-                      className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                      className={`w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-70 group-hover:opacity-100 ${activeId === item.id ? 'scale-110 opacity-100' : ''}`}
                     />
                   </div>
-                  <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient} opacity-90 transition-opacity duration-500 group-hover:opacity-80`} />
-                  <div className="absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500" />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient} opacity-90 transition-opacity duration-500 group-hover:opacity-80 ${activeId === item.id ? 'opacity-80' : ''}`} />
+                  <div className={`absolute inset-0 bg-bg-dark/40 group-hover:bg-transparent transition-colors duration-500 ${activeId === item.id ? 'bg-transparent' : ''}`} />
                   
                   {/* Top border light injection */}
-                  <div className="absolute top-0 inset-x-0 h-[1px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                  <div className={`absolute top-0 inset-x-0 h-[1px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 ${activeId === item.id ? 'opacity-100' : ''}`} />
 
                   {/* Content Box Front */}
                   <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end z-20">
                     <div className="transform transition-transform duration-500 relative z-30">
-                      <h3 className={`font-display font-bold text-2xl md:text-3xl text-white mb-3 drop-shadow-lg transition-transform duration-500 ${item.effectType === 'slideUp' ? 'group-hover:-translate-y-1' : ''}`}>
+                      <h3 className={`font-display font-bold text-2xl md:text-3xl text-white mb-3 drop-shadow-lg transition-transform duration-500 ${item.effectType === 'slideUp' && (item.id === activeId || true) ? '' : ''} ${item.effectType === 'slideUp' ? 'group-hover:-translate-y-1' : ''} ${item.effectType === 'slideUp' && activeId === item.id ? '-translate-y-1' : ''}`}>
                         {item.title}
                       </h3>
-                      <p className={`text-white/80 text-sm md:text-base leading-relaxed max-w-sm drop-shadow-md transition-transform duration-500 ${item.effectType === 'slideUp' ? 'group-hover:-translate-y-1' : ''}`}>
+                      <p className={`text-white/80 text-sm md:text-base leading-relaxed max-w-sm drop-shadow-md transition-transform duration-500 ${item.effectType === 'slideUp' ? 'group-hover:-translate-y-1' : ''} ${item.effectType === 'slideUp' && activeId === item.id ? '-translate-y-1' : ''}`}>
                         {item.subtitle}
                       </p>
                       
                       {/* Detailed Information sliding from bottom (Only for slideUp effect) */}
                       {item.effectType === "slideUp" && item.details && (
-                        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                        <div className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${activeId === item.id ? 'grid-rows-[1fr]' : 'grid-rows-[0fr] group-hover:grid-rows-[1fr]'}`}>
                           <div className="overflow-hidden">
-                            <p className="text-white/90 text-[15px] leading-relaxed mt-4 pt-4 border-t border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                            <p className={`text-white/90 text-[15px] leading-relaxed mt-4 pt-4 border-t border-white/20 transition-opacity duration-700 delay-100 ${activeId === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                               {item.details}
                             </p>
                           </div>
