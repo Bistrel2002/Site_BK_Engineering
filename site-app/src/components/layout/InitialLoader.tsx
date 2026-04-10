@@ -33,7 +33,7 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
       }}
     >
       <video
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain"
         autoPlay
         muted
         playsInline
