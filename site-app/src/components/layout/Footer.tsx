@@ -74,7 +74,7 @@ export default function Footer() {
       >
 
         {/* ── 4-column grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-19">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* 1 — Brand */}
           <div className="flex flex-col gap-4">
@@ -110,23 +110,6 @@ export default function Footer() {
             <ColHead>Navigation</ColHead>
             <ul className="flex flex-col gap-3">
               {nav.map(({ label, href }) => (
-                <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-200"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 2b — Services */}
-          <div>
-            <ColHead>Services</ColHead>
-            <ul className="flex flex-col gap-3">
-              {services.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     to={href}
