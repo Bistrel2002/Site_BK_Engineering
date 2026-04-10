@@ -45,7 +45,12 @@ function LoadingSpinner() {
 }
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 768;
+    }
+    return true;
+  });
 
   useEffect(() => {
     if (isLoading) {
