@@ -340,8 +340,8 @@ export default function AboutPage() {
               </p>
               <p>
                 Aujourd'hui, nous accompagnons des PME, ETI et grands comptes dans
-                leurs projets de transformation numérique, avec une équipe de plus de
-                30 consultants experts répartis sur 6 pôles de compétences.
+                leurs projets de transformation numérique, avec une équipe de
+                plus de 10 consultants experts répartis sur 6 pôles de compétences.
               </p>
               <p>
                 Notre modèle unique intègre également une offre de portage salarial

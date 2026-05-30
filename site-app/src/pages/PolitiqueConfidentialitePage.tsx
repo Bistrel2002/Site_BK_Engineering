@@ -78,8 +78,8 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <p>
               <strong className="text-text-primary">Contact DPO :</strong>{" "}
-              <a href="mailto:contact@bk-engineering.fr" className="text-accent-light hover:underline">
-                contact@bk-engineering.fr
+              <a href="mailto:bikel.keumeka@bkengineering.fr" className="text-accent-light hover:underline">
+                bikel.keumeka@bkengineering.fr
               </a>
             </p>
           </Block>
@@ -158,8 +158,8 @@ export default function PolitiqueConfidentialitePage() {
             </ul>
             <p className="mt-3">
               Pour exercer vos droits, contactez-nous à{" "}
-              <a href="mailto:contact@bk-engineering.fr" className="text-accent-light hover:underline">
-                contact@bk-engineering.fr
+              <a href="mailto:bikel.keumeka@bkengineering.fr" className="text-accent-light hover:underline">
+                bikel.keumeka@bkengineering.fr
               </a>. En cas de réponse insatisfaisante, vous pouvez saisir la{" "}
               <strong className="text-text-primary">CNIL</strong> : 3 Place de Fontenoy, 75007 Paris —{" "}
               <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-accent-light hover:underline">

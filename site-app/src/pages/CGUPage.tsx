@@ -92,8 +92,8 @@ export default function CGUPage() {
             </p>
             <p>
               <strong className="text-text-primary">Email :</strong>{" "}
-              <a href="mailto:contact@bk-engineering.fr" className="text-accent-light hover:underline">
-                contact@bk-engineering.fr
+              <a href="mailto:bikel.keumeka@bkengineering.fr" className="text-accent-light hover:underline">
+                bikel.keumeka@bkengineering.fr
               </a>
             </p>
           </Block>

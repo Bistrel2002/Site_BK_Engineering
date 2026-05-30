@@ -5,6 +5,24 @@ import { ChevronRight, Calculator, CheckCircle2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { gsap } from "gsap";
 
+const PARTICLE_POSITIONS = [
+  { left: "12%", top: "45%" },
+  { left: "85%", top: "15%" },
+  { left: "34%", top: "78%" },
+  { left: "67%", top: "82%" },
+  { left: "45%", top: "23%" },
+  { left: "92%", top: "64%" },
+  { left: "8%", top: "89%" },
+  { left: "55%", top: "41%" },
+  { left: "21%", top: "56%" },
+  { left: "73%", top: "37%" },
+  { left: "40%", top: "95%" },
+  { left: "62%", top: "12%" },
+  { left: "29%", top: "71%" },
+  { left: "80%", top: "50%" },
+  { left: "50%", top: "68%" },
+];
+
 export default function Hero() {
   const particlesRef = useRef<HTMLDivElement>(null);
   
@@ -43,13 +61,13 @@ export default function Hero() {
         
         {/* Floating particles background layer */}
         <div ref={particlesRef} className="absolute inset-0 pointer-events-none">
-          {Array.from({ length: 15 }).map((_, i) => (
+          {PARTICLE_POSITIONS.map((p, i) => (
             <div
               key={i}
               className="particle absolute w-1 h-1 rounded-full bg-accent-light/30"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: p.left,
+                top: p.top,
               }}
             />
           ))}
@@ -187,7 +205,7 @@ export default function Hero() {
                   +
                 </div>
                 <div>
-                  <div className="text-[13px] font-bold text-white leading-tight mt-1">+30 Consultants</div>
+                  <div className="text-[13px] font-bold text-white leading-tight mt-1">+10 Consultants</div>
                   <div className="text-[10px] text-text-secondary mt-0.5">Disponibles pour mission</div>
                 </div>
               </div>

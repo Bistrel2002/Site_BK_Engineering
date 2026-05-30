@@ -146,11 +146,11 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
-                  href="mailto:contact@bk-engineering.fr"
+                  href="mailto:bikel.keumeka@bkengineering.fr"
                   className="flex items-center gap-2.5 text-sm text-text-secondary hover:text-accent-light transition-colors duration-200 group"
                 >
                   <Mail size={13} className="text-accent shrink-0 group-hover:text-accent-light transition-colors" />
-                  contact@bk-engineering.fr
+                  bikel.keumeka@bkengineering.fr
                 </a>
               </li>
               <li>

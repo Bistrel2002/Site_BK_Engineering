@@ -111,7 +111,7 @@ export default function WhyBK() {
               <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary-light group-hover:bg-secondary group-hover:text-white transition-colors duration-500 group-hover:-translate-y-1 transform">
                 <Users size={28} />
               </div>
-              <AnimatedCounter value={30} suffix="+" className="text-4xl md:text-5xl" />
+              <AnimatedCounter value={10} suffix="+" className="text-4xl md:text-5xl" />
               <div className="text-xs font-semibold uppercase tracking-widest text-text-secondary">Consultants actifs</div>
             </div>
           </motion.div>
@@ -186,7 +186,7 @@ export default function WhyBK() {
                  <Clock size={28} />
               </div>
               <div className="relative z-10 flex flex-col gap-1">
-                <AnimatedCounter value={5} suffix=" ans" className="text-3xl lg:text-4xl" />
+                <AnimatedCounter value={4} suffix=" ans" className="text-3xl lg:text-4xl" />
                 <span className="text-xs font-semibold uppercase tracking-widest text-text-secondary">D'expérience</span>
               </div>
             </motion.div>

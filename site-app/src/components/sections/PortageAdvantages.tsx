@@ -46,7 +46,7 @@ interface Item {
 const items: Item[] = [
   { Icon: Shield,     num: "01", accent: "blue",  title: "RC Pro Couvrante",      description: "Bénéficiez de la RC Professionnelle de l'ESN BK Engineering pour toutes vos missions, sans frais supplémentaires." },
   { Icon: Heart,      num: "02", accent: "amber", title: "Mutuelle & Prévoyance",  description: "Protection sociale complète incluant mutuelle, prévoyance et maintien de salaire en cas d'arrêt." },
-  { Icon: Wallet,     num: "03", accent: "amber", title: "Frais de gestion",       description: "Transparents et compétitifs, sans aucune surprise en fin de mois. Pas de frais cachés.", stat: "5%" },
+  { Icon: Wallet,     num: "03", accent: "amber", title: "Frais de gestion",       description: "Transparents et compétitifs, sans aucune surprise en fin de mois. Pas de frais cachés.", stat: "7%" },
   { Icon: FileCheck,  num: "04", accent: "blue",  title: "Gestion Administrative", description: "Facturation, déclarations, bulletins de paie — BK Engineering s'occupe de toute votre paperasse." },
   { Icon: Users,      num: "05", accent: "blue",  title: "Réseau de Missions",     description: "Accédez aux missions internes de l'ESN et à l'ensemble du réseau de clients BK Engineering." },
   { Icon: Headphones, num: "06", accent: "amber", title: "Accompagnement Dédié",   description: "Un conseiller personnel pour vous guider à chaque étape de votre parcours en portage salarial." },

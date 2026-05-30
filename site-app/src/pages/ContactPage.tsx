@@ -192,8 +192,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-sm text-text-secondary">Email</div>
-                    <a href="mailto:contact@bk-engineering.fr" className="text-text-primary hover:text-accent-light transition-colors">
-                      contact@bk-engineering.fr
+                    <a href="mailto:bikel.keumeka@bkengineering.fr" className="text-text-primary hover:text-accent-light transition-colors">
+                      bikel.keumeka@bkengineering.fr
                     </a>
                   </div>
                 </div>

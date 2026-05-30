@@ -104,8 +104,8 @@ export default function MentionsLegalesPage() {
             <p>35700 Rennes, France</p>
             <p>
               <strong className="text-text-primary">Email :</strong>{" "}
-              <a href="mailto:contact@bk-engineering.fr" className="text-accent-light hover:underline">
-                contact@bk-engineering.fr
+              <a href="mailto:bikel.keumeka@bkengineering.fr" className="text-accent-light hover:underline">
+                bikel.keumeka@bkengineering.fr
               </a>
             </p>
           </Block>
@@ -120,8 +120,8 @@ export default function MentionsLegalesPage() {
             <p>
               Le site est hébergé par un prestataire tiers. Les coordonnées de l'hébergeur sont
               disponibles sur simple demande à l'adresse{" "}
-              <a href="mailto:contact@bk-engineering.fr" className="text-accent-light hover:underline">
-                contact@bk-engineering.fr
+              <a href="mailto:bikel.keumeka@bkengineering.fr" className="text-accent-light hover:underline">
+                bikel.keumeka@bkengineering.fr
               </a>.
             </p>
           </Block>

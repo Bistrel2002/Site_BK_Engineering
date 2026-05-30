@@ -18,7 +18,7 @@ const faqItems: FAQItem[] = [
   {
     question: "Quels sont les frais de gestion de BK Engineering ?",
     answer:
-      "Nos frais de gestion s'élèvent à 5% de votre chiffre d'affaires mensuel. Ce pourcentage couvre la gestion administrative complète : facturation clients, édition des bulletins de paie, déclarations sociales et fiscales, et l'accès à notre RC Pro.",
+      "Nos frais de gestion s'élèvent à 7% de votre chiffre d'affaires mensuel. Ce pourcentage couvre la gestion administrative complète : facturation clients, édition des bulletins de paie, déclarations sociales et fiscales, et l'accès à notre RC Pro.",
   },
   {
     question: "Comment fonctionne la RC Pro ?",
@@ -33,7 +33,7 @@ const faqItems: FAQItem[] = [
   {
     question: "Comment est calculé mon salaire net ?",
     answer:
-      "Votre salaire net est calculé à partir de votre chiffre d'affaires mensuel (TJM × jours travaillés), dont on soustrait les frais de gestion (5%), les charges patronales (~45%) et les charges salariales (~22%). Utilisez notre simulateur pour une estimation personnalisée.",
+      "Votre salaire net est calculé à partir de votre chiffre d'affaires mensuel (TJM × jours travaillés), dont on soustrait les frais de gestion (7%), les charges patronales (~45%) et les charges salariales (~22%). Utilisez notre simulateur pour une estimation personnalisée.",
   },
   {
     question: "Quels sont les délais pour commencer ?",
