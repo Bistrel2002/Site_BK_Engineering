@@ -203,8 +203,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-sm text-text-secondary">Téléphone</div>
-                    <a href="tel:+33100000000" className="text-text-primary hover:text-accent-light transition-colors">
-                      +33 1 00 00 00 00
+                    <a href="tel:+33755141866" className="text-text-primary hover:text-accent-light transition-colors">
+                      + 33 7 55 14 18 66
                     </a>
                   </div>
                 </div>
