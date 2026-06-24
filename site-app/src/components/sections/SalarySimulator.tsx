@@ -132,7 +132,7 @@ export default function SalarySimulator() {
       joursParMois,
       fraisPro,
       statut: statut === "cadre" ? "Cadre (URSSAF)" : "Non-Cadre (URSSAF)",
-      mutuelle: mutuelle ? "BK Engineering (50% employeur)" : "Dispense de mutuelle",
+      mutuelle: mutuelle ? "BK Engineering (50 €)" : "Dispense de mutuelle",
       caMensuel: formatEuro(results.caMensuel),
       fraisGestion: formatEuro(results.fraisGestion),
       chargesPatronales: formatEuro(results.chargesPatronales),
@@ -352,7 +352,7 @@ export default function SalarySimulator() {
                       : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
-                  Mutuelle BK (50%)
+                  Mutuelle BK (50€)
                 </button>
                 <button
                   type="button"
