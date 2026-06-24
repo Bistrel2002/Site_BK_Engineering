@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de réception - BK Engineering</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #020617;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #0f172a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            margin: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px auto;
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            background-color: #0ea5e9;
+            /* Fallback */
+            border-radius: 24px;
+            text-align: center;
+        }
+
+        .icon-container img {
+            display: inline-block;
+            border: 0;
+            outline: none;
+            width: 40px;
+            height: auto;
+            margin-top: 20px;
+            /* Vertically center 40px img in 80px container */
+        }
+
+        h1 {
+            margin: 0 0 16px 0;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        p.intro-text {
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.7;
+            text-align: center;
+            margin: 0 0 32px 0;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        .info-box {
+            background-color: #020617;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-title {
+            margin: 0 0 12px 0;
+            color: #38bdf8;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .info-text {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            background-color: #0ea5e9;
+            /* Fallback */
+            color: #ffffff !important;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #475569;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Mobile Adjustments */
+        @media only screen and (max-width: 600px) {
+            .card {
+                margin: 10px;
+                border-radius: 16px;
+            }
+
+            .card-body {
+                padding: 32px 20px !important;
+            }
+
+            h1 {
+                font-size: 24px !important;
+            }
+
+            p.intro-text {
+                font-size: 15px !important;
+            }
+
+            .icon-container {
+                width: 64px !important;
+                height: 64px !important;
+                margin-bottom: 20px !important;
+                border-radius: 18px !important;
+            }
+
+            .icon-container img {
+                width: 32px !important;
+                margin-top: 16px !important;
+                /* 64 - 32 = 32 / 2 = 16 */
+            }
+
+            .info-box {
+                padding: 20px !important;
+            }
+
+            .button {
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 16px 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#020617">
+        <tr>
+            <td align="center" valign="top" style="padding: 20px 0;">
+
+                <!-- Main Container -->
+                <table class="container" border="0" cellspacing="0" cellpadding="0" width="100%"
+                    style="max-width: 600px;">
+                    <tr>
+                        <td align="center">
+
+                            <!-- Card -->
+                            <table class="card" border="0" cellspacing="0" cellpadding="0" width="100%"
+                                bgcolor="#0f172a"
+                                style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                                <tr>
+                                    <td class="card-body" align="center" style="padding: 40px;">
+
+                                        <!-- Icon -->
+                                        <div class="icon-container">
+                                            <img src="https://img.icons8.com/ios-filled/100/ffffff/paper-plane.png"
+                                                alt="Send" width="40" height="40"
+                                                style="display: block; border: none; outline: none; margin: 0 auto; padding-top: 20px;" />
+                                        </div>
+
+                                        <h1
+                                            style="margin: 0 0 16px 0; font-size: 28px; font-weight: 800; color: #ffffff; text-align: center; letter-spacing: -0.5px;">
+                                            Message Bien Reçu !</h1>
+
+                                        <p class="intro-text"
+                                            style="color: #cbd5e1; font-size: 16px; line-height: 1.7; text-align: center; margin: 0 0 32px 0;">
+                                            Bonjour <strong>{{from_name}}</strong>,<br><br>
+                                            Merci de m'avoir contacté. Je vous confirme la bonne réception de votre
+                                            message concernant <br><em>"{{subject}}"</em>.
+                                        </p>
+
+                                        <!-- Divider -->
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td height="1" bgcolor="rgba(255,255,255,0.1)"
+                                                    style="font-size: 0; line-height: 0;">&nbsp;</td>
+                                            </tr>
+                                        </table>
+
+                                        <br>
+
+                                        <!-- Info Box -->
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#020617"
+                                            style="border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+                                            <tr>
+                                                <td align="left" style="padding: 24px;">
+                                                    <h3 class="info-title"
+                                                        style="margin: 0 0 12px 0; color: #38bdf8; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">
+                                                        Prochaine étape</h3>
+                                                    <p class="info-text"
+                                                        style="margin: 0; font-size: 15px; color: #cbd5e1; line-height: 1.6;">
+                                                        Je vais étudier votre demande attentivement et vous ferai un
+                                                        retour sous <strong>24h à 48h ouvrées</strong>. 
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Space -->
+                                        <br><br>
+
+                                        <!-- Button -->
+                                        <a href="https://bkengineering.fr" class="button"
+                                            style="display: inline-block; padding: 16px 36px; background-color: #0ea5e9; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 16px; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; text-align: center;">Retourner
+                                            au site</a>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Footer -->
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td class="footer" align="center"
+                                        style="padding: 20px; color: #475569; font-size: 13px; line-height: 1.6;">
+                                        &copy; 2026 BK Engineering.<br>
+                                        Paris, France<br><br>
+                                        <span style="opacity: 0.7;">Cet email a été envoyé automatiquement, merci de ne
+                                            pas y répondre directement.</span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

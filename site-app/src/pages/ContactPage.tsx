@@ -3,7 +3,8 @@ import { motion } from "motion/react";
 import Section from "@/components/layout/Section";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
-import { Send, Mail, Phone, MapPin, CheckCircle } from "lucide-react";
+import { Send, Mail, Phone, MapPin, CheckCircle, Loader2 } from "lucide-react";
+import { sendContactEmail } from "@/utils/emailService";
 
 const projectTypes = [
   "Conseil SI",
@@ -25,10 +26,35 @@ const budgetRanges = [
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [phone, setPhone] = useState("");
+  const [projectType, setProjectType] = useState("");
+  const [budget, setBudget] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError(null);
+
+    const subject = projectType || "Demande de contact";
+    const companyText = company ? `Entreprise: ${company}` : "Entreprise: Non renseignée";
+    const phoneText = phone ? `Téléphone: ${phone}` : "Téléphone: Non renseigné";
+    const budgetText = budget ? `Budget estimé: ${budget}` : "Budget: Non renseigné";
+    const formattedMessage = `${companyText}\n${phoneText}\n${budgetText}\n\nDescription du besoin:\n${message}`;
+
+    const res = await sendContactEmail(name, email, subject, formattedMessage);
+
+    if (res.success) {
+      setSent(true);
+    } else {
+      setError(res.message);
+    }
+    setLoading(false);
   };
 
   return (
@@ -61,6 +87,8 @@ export default function ContactPage() {
                       id="name"
                       type="text"
                       required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="Marie Dupont"
                       className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary placeholder:text-text-secondary/40 focus:outline-none focus:border-accent transition-colors"
                     />
@@ -73,6 +101,8 @@ export default function ContactPage() {
                       id="email"
                       type="email"
                       required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="marie@entreprise.fr"
                       className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary placeholder:text-text-secondary/40 focus:outline-none focus:border-accent transition-colors"
                     />
@@ -87,6 +117,8 @@ export default function ContactPage() {
                     <input
                       id="company"
                       type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
                       placeholder="Nom de l'entreprise"
                       className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary placeholder:text-text-secondary/40 focus:outline-none focus:border-accent transition-colors"
                     />
@@ -98,6 +130,8 @@ export default function ContactPage() {
                     <input
                       id="phone"
                       type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       placeholder="+33 6 00 00 00 00"
                       className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary placeholder:text-text-secondary/40 focus:outline-none focus:border-accent transition-colors"
                     />
@@ -111,6 +145,8 @@ export default function ContactPage() {
                   <select
                     id="project-type"
                     required
+                    value={projectType}
+                    onChange={(e) => setProjectType(e.target.value)}
                     className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary focus:outline-none focus:border-accent transition-colors"
                   >
                     <option value="">Sélectionnez...</option>
@@ -126,6 +162,8 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="budget"
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
                     className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary focus:outline-none focus:border-accent transition-colors"
                   >
                     <option value="">Sélectionnez...</option>
@@ -143,18 +181,27 @@ export default function ContactPage() {
                     id="message"
                     required
                     rows={5}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder="Décrivez votre projet, vos objectifs et vos contraintes techniques..."
                     className="w-full bg-bg-card border border-border rounded-xl px-4 py-3 text-text-primary placeholder:text-text-secondary/40 focus:outline-none focus:border-accent transition-colors resize-none"
                   />
                 </div>
 
+                {error && (
+                  <div className="p-4 rounded-xl bg-error/10 border border-error/20 text-error text-sm">
+                    {error}
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   size="lg"
                   className="w-full"
-                  icon={<Send size={18} />}
+                  disabled={loading}
+                  icon={loading ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
                 >
-                  Envoyer ma demande
+                  {loading ? "Envoi en cours..." : "Envoyer ma demande"}
                 </Button>
               </form>
             ) : (

@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { 
+      "source": "/(services|portage|contact|a-propos|mentions-legales|politique-confidentialite|cgu)", 
+      "destination": "/index.html" 
+    }
   ]
 }

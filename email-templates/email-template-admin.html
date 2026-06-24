@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveau Message - BK Engineering</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f172a;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        .accent-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            background-color: #8b5cf6;
+            /* Fallback */
+            width: 100%;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px auto;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            background-color: #3b82f6;
+            /* Fallback */
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .icon-container img {
+            display: inline-block;
+            border: 0;
+            outline: none;
+            width: 40px;
+            height: auto;
+            margin-top: 20px;
+            /* Vertically center the 40px image in 80px box */
+        }
+
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 15px;
+            text-align: center;
+            margin: 0 0 32px 0;
+        }
+
+        .content-box {
+            background-color: #0f172a;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3b82f6;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .value {
+            font-size: 15px;
+            color: #f1f5f9;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .message-box {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 4px solid #8b5cf6;
+            margin-top: 8px;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        .button-wrapper {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            background-color: #3b82f6;
+            /* Fallback */
+            color: #ffffff !important;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* Mobile Adjustments */
+        @media only screen and (max-width: 600px) {
+            .card {
+                margin: 10px;
+                border-radius: 16px;
+            }
+
+            .card-body {
+                padding: 24px 16px !important;
+            }
+
+            h1 {
+                font-size: 22px !important;
+            }
+
+            .icon-container {
+                width: 64px !important;
+                height: 64px !important;
+                margin-bottom: 20px !important;
+                border-radius: 16px !important;
+            }
+
+            .icon-container img {
+                width: 32px !important;
+                margin-top: 16px !important;
+                /* 64 - 32 = 32 / 2 = 16 */
+            }
+
+            .content-box {
+                padding: 16px !important;
+            }
+
+            .button {
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 16px 20px !important;
+            }
+
+            .message-box {
+                padding: 12px !important;
+                font-size: 14px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 100% background wrapper -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0f172a">
+        <tr>
+            <td align="center" valign="top" style="padding: 20px 0;">
+
+                <!-- Main Container -->
+                <table class="container" border="0" cellspacing="0" cellpadding="0" width="100%"
+                    style="max-width: 600px;">
+                    <tr>
+                        <td align="center">
+
+                            <!-- Card -->
+                            <table class="card" border="0" cellspacing="0" cellpadding="0" width="100%"
+                                bgcolor="#1e293b" style="border-radius: 20px; overflow: hidden;">
+
+                                <!-- Accent Top Line -->
+                                <tr>
+                                    <td class="accent-bar" height="6" style="background-color: #8b5cf6;"></td>
+                                </tr>
+
+                                <!-- Card Body -->
+                                <tr>
+                                    <td class="card-body" align="left" style="padding: 40px;">
+
+                                        <!-- Header Section -->
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="center">
+                                                    <!-- Icon -->
+                                                    <div class="icon-container">
+                                                        <img src="https://img.icons8.com/ios-filled/100/ffffff/new-post.png"
+                                                            alt="Mail Icon" width="40" height="40"
+                                                            style="display: block; border: none; outline: none; margin: 0 auto; padding-top: 20px;" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <h1
+                                                        style="margin: 0 0 8px 0; font-size: 26px; font-weight: 800; color: #ffffff; text-align: center; letter-spacing: -0.5px;">
+                                                        Nouveau Projet !</h1>
+                                                    <p class="subtitle" style="margin: 0 0 32px 0;">Vous avez reçu une
+                                                        nouvelle demande de contact.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Content Box -->
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0f172a"
+                                            style="border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+                                            <tr>
+                                                <td style="padding: 24px;">
+
+                                                    <!-- Field: Name -->
+                                                    <div class="field" style="margin-bottom: 20px;">
+                                                        <strong class="label"
+                                                            style="display: block; font-size: 12px; text-transform: uppercase; color: #3b82f6; letter-spacing: 1px; margin-bottom: 8px;">Expéditeur</strong>
+                                                        <p class="value"
+                                                            style="margin: 0; font-size: 15px; color: #f1f5f9;">
+                                                            {{from_name}}</p>
+                                                    </div>
+
+                                                    <!-- Field: Email -->
+                                                    <div class="field" style="margin-bottom: 20px;">
+                                                        <strong class="label"
+                                                            style="display: block; font-size: 12px; text-transform: uppercase; color: #3b82f6; letter-spacing: 1px; margin-bottom: 8px;">Adresse
+                                                            Email</strong>
+                                                        <p class="value" style="margin: 0; font-size: 15px;"><a
+                                                                href="mailto:{{reply_to}}"
+                                                                style="color: #60a5fa; text-decoration: none;">{{reply_to}}</a>
+                                                        </p>
+                                                    </div>
+
+                                                    <!-- Field: Subject -->
+                                                    <div class="field" style="margin-bottom: 20px;">
+                                                        <strong class="label"
+                                                            style="display: block; font-size: 12px; text-transform: uppercase; color: #3b82f6; letter-spacing: 1px; margin-bottom: 8px;">Sujet</strong>
+                                                        <p class="value"
+                                                            style="margin: 0; font-size: 15px; color: #f1f5f9;">
+                                                            <strong>{{subject}}</strong></p>
+                                                    </div>
+
+                                                    <!-- Field: Message -->
+                                                    <div class="field" style="margin-bottom: 0;">
+                                                        <strong class="label"
+                                                            style="display: block; font-size: 12px; text-transform: uppercase; color: #3b82f6; letter-spacing: 1px; margin-bottom: 8px;">Message</strong>
+                                                        <div class="message-box"
+                                                            style="background-color: #1e293b; border-radius: 12px; padding: 16px; border-left: 4px solid #8b5cf6; margin-top: 8px; font-style: italic; color: #cbd5e1; font-size: 15px; line-height: 1.6;">
+                                                            {{message}}
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Button -->
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="center" style="padding-top: 32px;">
+                                                    <a href="mailto:{{reply_to}}?subject=Re: {{subject}}" class="button"
+                                                        style="display: inline-block; padding: 16px 32px; background-color: #3b82f6; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; text-align: center;">Répondre
+                                                        à {{from_name}}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- End Card -->
+
+                            <!-- Footer -->
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td class="footer" align="center"
+                                        style="padding: 20px; color: #64748b; font-size: 13px;">
+                                        Généré par BK Engineering Portal <br>&bull;<br> Ne pas répondre directement à
+                                        cet email système
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                </table>
+                <!-- End Main Container -->
+
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

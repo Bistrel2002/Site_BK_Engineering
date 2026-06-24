@@ -16,8 +16,10 @@ import {
   Handshake, 
   ChevronDown, 
   ChevronUp,
-  HelpCircle
+  HelpCircle,
+  Loader2
 } from "lucide-react";
+import { sendSimulationEmail } from "@/utils/emailService";
 
 // Portage Salarial & URSSAF Constants
 const FRAIS_GESTION_PERCENT = 7; // Updated to 7% as requested
@@ -37,6 +39,8 @@ export default function SalarySimulator() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const results = useMemo(() => {
     // 1. Chiffre d'Affaires Mensuel Brut (Billing)
@@ -111,15 +115,57 @@ export default function SalarySimulator() {
     };
   }, [tjm, joursParMois, fraisPro, statut, mutuelle]);
 
-  const handleCallback = () => {
-    setCallbackSent(true);
-    setTimeout(() => {
-      setShowCallback(false);
-      setCallbackSent(false);
-      setName("");
-      setPhone("");
-      setEmail("");
-    }, 3000);
+  const handleCallback = async () => {
+    if (!name || !email || !phone) {
+      setError("Veuillez remplir tous les champs.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    const params = {
+      name,
+      email,
+      phone,
+      tjm,
+      joursParMois,
+      fraisPro,
+      statut: statut === "cadre" ? "Cadre (URSSAF)" : "Non-Cadre (URSSAF)",
+      mutuelle: mutuelle ? "BK Engineering (50% employeur)" : "Dispense de mutuelle",
+      caMensuel: formatEuro(results.caMensuel),
+      fraisGestion: formatEuro(results.fraisGestion),
+      chargesPatronales: formatEuro(results.chargesPatronales),
+      chargesSalariales: formatEuro(results.chargesSalariales),
+      salaireNet: formatEuro(results.salaireNet),
+      revenuNetTotal: formatEuro(results.revenuNetTotal),
+      revenuNetTotalAnnuel: formatEuro(results.revenuNetTotalAnnuel),
+      totalCotisations: formatEuro(results.totalCotisations),
+      pctNet: results.pctNet,
+      pctSocial: results.pctSocial,
+      pctGestion: results.pctGestion,
+      santeBreakdown: formatEuro(results.santeBreakdown),
+      retraiteBreakdown: formatEuro(results.retraiteBreakdown),
+      chomageBreakdown: formatEuro(results.chomageBreakdown),
+      solidariteBreakdown: formatEuro(results.solidariteBreakdown),
+    };
+
+    const res = await sendSimulationEmail(params);
+
+    if (res.success) {
+      setCallbackSent(true);
+      setTimeout(() => {
+        setShowCallback(false);
+        setCallbackSent(false);
+        setName("");
+        setPhone("");
+        setEmail("");
+        setError(null);
+      }, 5000);
+    } else {
+      setError(res.message);
+    }
+    setLoading(false);
   };
 
   const formatEuro = (n: number) =>
@@ -569,14 +615,20 @@ export default function SalarySimulator() {
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-bg-card border border-border/40 rounded-xl px-4 py-2.5 text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:border-accent transition-colors text-sm"
                     />
+                    {error && (
+                      <div className="p-3 rounded-xl bg-error/10 border border-error/20 text-error text-xs">
+                        {error}
+                      </div>
+                    )}
                     <Button
                       variant="secondary"
                       size="lg"
                       className="w-full"
-                      icon={<Send size={18} />}
+                      disabled={loading}
+                      icon={loading ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
                       onClick={handleCallback}
                     >
-                      Envoyer ma demande de devis
+                      {loading ? "Envoi en cours..." : "Envoyer ma demande de devis"}
                     </Button>
                   </>
                 ) : (
