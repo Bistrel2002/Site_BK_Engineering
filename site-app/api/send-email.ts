@@ -5,7 +5,7 @@ import {
   getClientSimulationEmailHTML, 
   getAdminSimulationEmailHTML,
   type SimulationParams 
-} from '../src/utils/emailTemplates';
+} from './emailTemplates';
 
 import https from 'https';
 
