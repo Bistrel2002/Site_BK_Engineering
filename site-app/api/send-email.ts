@@ -7,20 +7,15 @@ import {
   type SimulationParams 
 } from '../src/utils/emailTemplates';
 
-const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
+import https from 'https';
+
 const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || 'bikel.keumeka@bkengineering.fr';
 const SENDER_NAME = process.env.BREVO_SENDER_NAME || 'BK Engineering';
 const ADMIN_RECEIVER_EMAIL = process.env.CONTACT_EMAIL || 'bikel.keumeka@bkengineering.fr';
 
 async function sendBrevoEmail(apiKey: string, toEmail: string, toName: string, subject: string, htmlContent: string) {
-  const response = await fetch(BREVO_API_URL, {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'content-type': 'application/json',
-      'api-key': apiKey,
-    },
-    body: JSON.stringify({
+  return new Promise((resolve, reject) => {
+    const postData = JSON.stringify({
       sender: {
         name: SENDER_NAME,
         email: SENDER_EMAIL,
@@ -33,15 +28,46 @@ async function sendBrevoEmail(apiKey: string, toEmail: string, toName: string, s
       ],
       subject: subject,
       htmlContent: htmlContent,
-    }),
+    });
+
+    const options = {
+      hostname: 'api.brevo.com',
+      port: 443,
+      path: '/v3/smtp/email',
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'api-key': apiKey,
+        'content-length': Buffer.byteLength(postData),
+      },
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+      res.on('end', () => {
+        if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            resolve({ success: true });
+          }
+        } else {
+          reject(new Error(`Brevo API returned status ${res.statusCode}: ${data}`));
+        }
+      });
+    });
+
+    req.on('error', (e) => {
+      reject(e);
+    });
+
+    req.write(postData);
+    req.end();
   });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Brevo API returned status ${response.status}: ${errorText}`);
-  }
-
-  return response.json();
 }
 
 export default async function handler(req: any, res: any) {
