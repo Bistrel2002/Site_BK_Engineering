@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Calculator, CheckCircle2 } from "lucide-react";
+import { ChevronRight, CheckCircle2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { gsap } from "gsap";
 
@@ -123,9 +123,9 @@ export default function Hero() {
                   </span>
                 </Button>
               </Link>
+              {/* Masqué : bouton "Simuler mon revenu" (page /portage désactivée)
               <Link to="/portage">
-                {/* Outline button mimicking "Take a platform tour" */}
-                <Button 
+                <Button
                   variant="ghost"
                   className="rounded-xl px-6 py-4 text-[14px] font-semibold border-text-secondary/30 text-text-secondary hover:text-white hover:border-text-secondary gap-2"
                 >
@@ -133,6 +133,7 @@ export default function Hero() {
                   Simuler mon revenu
                 </Button>
               </Link>
+              */}
             </div>
           </motion.div>
 

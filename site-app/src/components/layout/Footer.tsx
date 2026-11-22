@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const nav = [
   { label: "Accueil",          href: "/" },
   { label: "Services",         href: "/services" },
-  { label: "Portage Salarial", href: "/portage" },
+  // Masqué : { label: "Portage Salarial", href: "/portage" },
   { label: "À Propos",         href: "/a-propos" },
   { label: "Contact",          href: "/contact" },
 ];
@@ -88,7 +88,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-text-secondary text-sm leading-relaxed max-w-[260px]">
-              ESN française spécialisée en Conseil SI, Développement logiciel et Portage Salarial.
+              ESN française spécialisée en Conseil SI, Développement logiciel et Cloud.
             </p>
 
             <div className="flex gap-2">

@@ -41,6 +41,7 @@ export default function CTASection() {
                 Demander un devis gratuit
               </Button>
             </Link>
+            {/* Masqué : bouton "Découvrir le portage" (page /portage désactivée)
             <Link to="/portage">
               <Button
                 variant="ghost"
@@ -50,6 +51,7 @@ export default function CTASection() {
                 Découvrir le portage
               </Button>
             </Link>
+            */}
           </div>
         </motion.div>
       </div>

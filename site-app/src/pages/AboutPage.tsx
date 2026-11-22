@@ -216,7 +216,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="text-lg text-text-secondary max-w-xl leading-relaxed"
               >
-                BK Engineering accompagne entreprises et freelances dans leur
+                BK Engineering accompagne les entreprises dans leur
                 transformation numérique, avec une expertise technique de pointe
                 et un engagement humain sans compromis.
               </motion.p>
@@ -342,12 +342,6 @@ export default function AboutPage() {
                 Aujourd'hui, nous accompagnons des PME, ETI et grands comptes dans
                 leurs projets de transformation numérique, avec une équipe de
                 plus de 10 consultants experts répartis sur 6 pôles de compétences.
-              </p>
-              <p>
-                Notre modèle unique intègre également une offre de portage salarial
-                pour les freelances IT — créant un écosystème vertueux où les talents
-                indépendants bénéficient de la sécurité de l'ESN tout en enrichissant
-                notre capacité de delivery.
               </p>
             </div>
           </motion.div>

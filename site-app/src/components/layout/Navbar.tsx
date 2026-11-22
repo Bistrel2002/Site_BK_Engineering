@@ -8,7 +8,7 @@ import { cn } from "@/utils/cn";
 const navLinks = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Portage Salarial", href: "/portage" },
+  // Masqué : { label: "Portage Salarial", href: "/portage" },
   { label: "À Propos", href: "/a-propos" },
 ];
 

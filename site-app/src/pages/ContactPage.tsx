@@ -279,18 +279,6 @@ export default function ContactPage() {
                 Nous répondons en moyenne sous <strong className="text-text-primary">4 heures</strong> les jours ouvrés.
               </p>
             </div>
-
-            <div className="glass rounded-2xl p-6">
-              <h3 className="font-display font-semibold text-lg text-text-primary mb-4">
-                Vous êtes freelance ?
-              </h3>
-              <p className="text-sm text-text-secondary mb-4">
-                Découvrez notre offre de portage salarial avec simulateur de revenus intégré.
-              </p>
-              <a href="/portage" className="text-sm font-medium text-secondary hover:text-secondary-light transition-colors">
-                Simuler mon revenu →
-              </a>
-            </div>
           </motion.div>
         </div>
       </Section>

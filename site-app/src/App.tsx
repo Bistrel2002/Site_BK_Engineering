@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -29,7 +29,6 @@ function ScrollHandler() {
 
 const HomePage = lazy(() => import("@/pages/HomePage"));
 const ServicesPage = lazy(() => import("@/pages/ServicesPage"));
-const PortagePage = lazy(() => import("@/pages/PortagePage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const MentionsLegalesPage = lazy(() => import("@/pages/MentionsLegalesPage"));
@@ -109,7 +108,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
-              <Route path="/portage" element={<PortagePage />} />
+              {/* Page Portage masquée : redirige vers l'accueil. Pour la réactiver : <Route path="/portage" element={<PortagePage />} /> */}
+              <Route path="/portage" element={<Navigate to="/" replace />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/a-propos" element={<AboutPage />} />
               <Route path="/mentions-legales" element={<MentionsLegalesPage />} />

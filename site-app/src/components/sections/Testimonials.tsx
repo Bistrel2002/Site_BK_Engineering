@@ -35,11 +35,11 @@ const testimonials = [
   {
     id: 4,
     name: "Lucas Moreau",
-    role: "Développeur Freelance",
-    company: "BK Portage",
+    role: "Chef de projet",
+    company: "BK Engineering",
     initial: "LM",
     color: "from-accent to-primary-light",
-    text: "Le portage salarial chez BK Engineering, c'est la sérénité : RC Pro couvrante, simulateur transparent, et une équipe aux petits soins. Je recommande sans hésiter.",
+    text: "Une équipe aux petits soins : interlocuteurs disponibles, suivi transparent et vrai sens du service. Je recommande sans hésiter.",
   },
   {
     id: 5,
