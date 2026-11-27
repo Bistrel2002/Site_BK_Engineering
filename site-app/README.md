@@ -1,73 +1,31 @@
-# React + TypeScript + Vite
+# bkengineering.fr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site statique (HTML, CSS, JavaScript) servi par Vercel, plus une fonction serverless
+pour le formulaire de contact.
 
-Currently, two official plugins are available:
+| Dossier | Contenu |
+|---|---|
+| `public/` | le site : pages, styles, scripts, logo 3D. Généré par le skill premium-3d-glass à partir du brief `bk-engineering-brief/site.json` |
+| `api/send-email.ts` | envoi des e-mails du formulaire via Brevo (inchangé) |
+| `vercel.json` | pas de build, sortie `public/`, URL propres, redirections, en-têtes de cache |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Variables d'environnement (Vercel)
 
-## React Compiler
+Rien à changer : la fonction lit toujours `BREVO_API_KEY`, et en option
+`BREVO_SENDER_EMAIL`, `BREVO_SENDER_NAME` et `CONTACT_EMAIL`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Le formulaire de `/contact` envoie `{ type: "contact", data: { name, email, subject, message } }`
+à `/api/send-email`. Si l'envoi échoue, il ouvre la messagerie du visiteur avec le message prêt.
 
-## Expanding the ESLint configuration
+## Mettre à jour le site
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Modifier le brief puis régénérer le site :
+   `python3 premium-3d-glass/template/tools/build_site.py bk-engineering-brief/site.json --out bk-engineering-site`
+2. Copier le résultat dans `public/`, sans `serve.py`, `build_monofichier.py`,
+   `version-monofichier.html`, `README.md` ni `vercel.json`.
+3. Pousser sur `main` : Vercel déploie.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Voir le site en local
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+`python3 -m http.server -d public 8000` (les URL propres comme `/services` ne marchent
+qu'avec `vercel dev` ; en local, ouvrez `/services.html`).

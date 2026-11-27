@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bkengineering.fr/sitemap.xml
