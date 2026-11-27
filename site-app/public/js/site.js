@@ -52,7 +52,15 @@
             f.type ? 'Type de demande : ' + f.type : null, f.budget ? 'Budget estimé : ' + f.budget : null,
             '', f.message
         ].filter(function (line) { return line !== null; });
-        return { fields: f, subject: subject, body: lines.join('\n') };
+        // For the API: name and e-mail travel as their own fields, so the message keeps
+        // the rest, and the subject is the request type (what the confirmation e-mail quotes).
+        var details = [
+            f.company ? 'Entreprise : ' + f.company : null, f.phone ? 'Téléphone : ' + f.phone : null,
+            f.budget ? 'Budget estimé : ' + f.budget : null
+        ].filter(function (line) { return line !== null; });
+        var apiMessage = (details.length ? details.join('\n') + '\n\n' : '') + (form.dataset.messageLabel || 'Description du besoin :') + '\n' + f.message;
+        return { fields: f, subject: subject, body: lines.join('\n'),
+                 apiSubject: f.type || form.dataset.apiSubject || 'Demande de contact', apiMessage: apiMessage };
     }
     function mailto(form) {
         var c = compose(form);
@@ -102,7 +110,7 @@
                 fetch(endpoint, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ type: form.dataset.kind || 'contact', data: {
-                        name: c.fields.name, email: c.fields.email, subject: c.subject, message: c.body } }),
+                        name: c.fields.name, email: c.fields.email, subject: c.apiSubject, message: c.apiMessage } }),
                     signal: controller ? controller.signal : undefined
                 }).then(function (response) {
                     clearTimeout(timer);
