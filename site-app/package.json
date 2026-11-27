@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev": "python3 serve.py 5173",
+    "dev:lan": "python3 serve.py 5173 --lan",
     "build": "echo 'Site statique : aucun build, les pages sont dans public/'"
   },
   "dependencies": {

@@ -27,7 +27,7 @@ Le formulaire de `/contact` envoie `{ type: "contact", data: { name, email, subj
 
 ## Voir le site en local
 
-`python3 serve.py` puis <http://localhost:8000> (adresses propres comme sur Vercel :
-`/services`, `/a-propos`). `python3 serve.py 8000 --lan` l'ouvre aussi aux autres appareils
+`npm run dev` (ou `python3 serve.py 5173`) puis <http://localhost:5173> (adresses propres comme sur Vercel :
+`/services`, `/a-propos`). `npm run dev:lan` l'ouvre aussi aux autres appareils
 du réseau local. Le formulaire n'envoie pas d'e-mail en local (pas de fonction `api/`) :
 il ouvre la messagerie avec le message prêt.
