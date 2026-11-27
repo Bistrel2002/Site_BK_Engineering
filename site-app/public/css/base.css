@@ -102,6 +102,29 @@
 .form-status[data-kind="ok"] { color: #8ff0c0; }
 .form-status[data-kind="busy"] { color: #c9d1e2; }
 .pill-btn[disabled] { opacity: 0.55; pointer-events: none; }
+/* Result of a send: a clear panel, not a line under the button. */
+.contact-card.is-sent .card-head, .contact-card.is-sent .field-grid,
+.contact-card.is-sent .card-foot, .contact-card.is-sent .form-status { display: none; }
+.form-result {
+    display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; align-items: start;
+    margin-top: 22px; padding: 22px; border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.05);
+}
+.form-result[hidden] { display: none; }
+.contact-card.is-sent .form-result { margin-top: 0; padding: 34px 28px; }
+.form-result-icon {
+    display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+    font-size: 22px; font-weight: 500; color: #04050b; background: #8ff0c0;
+    box-shadow: 0 0 0 8px rgba(143, 240, 192, 0.14);
+}
+.form-result[data-kind="error"] { border-color: rgba(255, 170, 140, 0.45); background: rgba(255, 120, 90, 0.08); }
+.form-result[data-kind="error"] .form-result-icon { background: #ffb49c; box-shadow: 0 0 0 8px rgba(255, 180, 156, 0.14); }
+.form-result h3 { font-size: 22px; line-height: 1.2; font-weight: 500; letter-spacing: -0.02em; color: #ffffff; }
+.form-result p { margin-top: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.form-result .pill-btn { margin-top: 20px; text-decoration: none; }
+.form-result .form-result-mail { font-size: 13px; color: var(--ink-mute); }
+.pill-btn-ghost { background: transparent; color: #ffffff; border-color: rgba(255, 255, 255, 0.3); }
+@media (max-width: 520px) { .form-result { grid-template-columns: 1fr; } }
 
 /* ---- Footer (inner pages, and the bottom of the home contact chapter) ---- */
 .site-footer {

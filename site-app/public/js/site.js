@@ -74,6 +74,62 @@
         el.textContent = text;
         el.dataset.kind = kind;
     }
+    // A clear result panel in the form: on success the fields give way to a confirmation;
+    // on failure a visible message keeps the fields and offers the visitor's mail client.
+    function el(tag, cls, text) {
+        var node = document.createElement(tag);
+        if (cls) node.className = cls;
+        if (text) node.textContent = text;
+        return node;
+    }
+    function showResult(form, kind, c) {
+        var box = form.querySelector('.form-result');
+        if (!box) {
+            box = el('div', 'form-result');
+            box.setAttribute('role', 'alert');
+            form.appendChild(box);
+        }
+        box.textContent = '';
+        box.dataset.kind = kind;
+        box.hidden = false;
+        var icon = el('span', 'form-result-icon');
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = kind === 'ok' ? '✓' : '!';
+        box.appendChild(icon);
+        var body = el('div', 'form-result-body');
+        if (kind === 'ok') {
+            body.appendChild(el('h3', '', form.dataset.okTitle || 'Message envoyé'));
+            var first = (c.fields.name || '').split(' ')[0];
+            body.appendChild(el('p', '', (first ? 'Merci ' + first + ', ' : 'Merci, ') +
+                (form.dataset.okText || 'nous avons bien reçu votre demande.')));
+            body.appendChild(el('p', '', 'Un e-mail de confirmation vient de partir à ' + c.fields.email +
+                '. Pensez à regarder vos courriers indésirables si vous ne le voyez pas.'));
+            var again = el('button', 'pill-btn pill-btn-ghost', form.dataset.again || 'Envoyer un autre message');
+            again.type = 'button';
+            again.addEventListener('click', function () {
+                form.classList.remove('is-sent');
+                box.hidden = true;
+                var firstField = form.querySelector('input:not([type=hidden]):not([tabindex="-1"])');
+                if (firstField) firstField.focus();
+            });
+            body.appendChild(again);
+            form.classList.add('is-sent');
+        } else {
+            body.appendChild(el('h3', '', form.dataset.errorTitle || 'Le message n’est pas parti'));
+            body.appendChild(el('p', '', form.dataset.errorText ||
+                'Un problème technique a empêché l’envoi. Votre texte est toujours dans le formulaire : vous pouvez réessayer, ou nous l’envoyer depuis votre messagerie.'));
+            var link = mailto(form);
+            if (link) {
+                var a = el('a', 'pill-btn', 'Envoyer depuis ma messagerie');
+                a.href = link;
+                body.appendChild(a);
+                body.appendChild(el('p', 'form-result-mail', 'Ou écrivez directement à ' + form.dataset.email));
+            }
+        }
+        box.appendChild(body);
+        box.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    }
+
     function setupForms() {
         // Prefill the request type from the URL: /contact?type=candidature
         var params = new URLSearchParams(window.location.search);
@@ -94,16 +150,23 @@
                 e.preventDefault();
                 if (!form.reportValidity()) return;
                 var c = compose(form);
-                if (c.fields.trap) { status(form, 'ok', form.dataset.ok || 'Merci.'); form.reset(); return; }   // bot
-                var fallback = function () {
+                if (c.fields.trap) { showResult(form, 'ok', c); form.reset(); return; }   // bot
+                var endpoint = form.dataset.endpoint;
+                if (!endpoint || !window.fetch) {
+                    // No API: the visitor's mail client sends it, with the message ready.
                     var link = mailto(form);
                     status(form, 'info', form.dataset.fallback || 'Votre messagerie va s’ouvrir avec le message prêt à envoyer.');
                     if (link) window.location.href = link;
-                };
-                var endpoint = form.dataset.endpoint;
-                if (!endpoint || !window.fetch) { fallback(); return; }
+                    return;
+                }
+                var fallback = function () { status(form, '', ''); showResult(form, 'error', c); };
                 var button = form.querySelector('[type=submit]');
+                var label = button && button.querySelector('.btn-label');
+                var idle = label ? label.textContent : '';
+                var previous = form.querySelector('.form-result');
+                if (previous) previous.hidden = true;
                 if (button) button.disabled = true;
+                if (label) label.textContent = form.dataset.busy || 'Envoi en cours…';
                 status(form, 'busy', form.dataset.busy || 'Envoi en cours…');
                 var controller = window.AbortController ? new AbortController() : null;
                 var timer = setTimeout(function () { if (controller) controller.abort(); }, 12000);
@@ -115,12 +178,13 @@
                 }).then(function (response) {
                     clearTimeout(timer);
                     if (!response.ok) throw new Error('HTTP ' + response.status);
-                    status(form, 'ok', form.dataset.ok || 'Message envoyé. Nous revenons vers vous rapidement.');
+                    status(form, '', '');
+                    showResult(form, 'ok', c);
                     form.reset();
                 }).catch(function () {
                     clearTimeout(timer);
                     fallback();
-                }).then(function () { if (button) button.disabled = false; });
+                }).then(function () { if (button) button.disabled = false; if (label) label.textContent = idle; });
             });
         });
         window.__siteForm = { mailto: mailto, compose: compose };

@@ -1,5 +1,5 @@
-@import url("./fonts.css?v=20261127");
-@import url("./base.css?v=20261127");
+@import url("./fonts.css?v=20261127-236f82");
+@import url("./base.css?v=20261127-236f82");
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 .cinematic-container, #webgl, .story-progress { user-select: none; -webkit-user-select: none; }
